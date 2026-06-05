@@ -104,15 +104,32 @@ class BookDetailScreen extends StatelessWidget {
             // 1. ẢNH BÌA SÁCH
             Container(
               width: double.infinity,
-              height: 250,
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.primary.withOpacity(0.08),
               ),
-              child: Center(
-                child: Icon(
-                  Icons.menu_book_rounded,
-                  size: 100,
-                  color: Theme.of(context).colorScheme.primary,
+              child: AspectRatio(
+                aspectRatio: 1.0, // Tỷ lệ vuông 1:1 cho đẹp
+                child: (bookData['imageUrl'] != null && bookData['imageUrl'].toString().isNotEmpty)
+                    ? Image.network(
+                  bookData['imageUrl'],
+                  fit: BoxFit.cover, // Cắt ảnh cho vừa khít khung
+                  loadingBuilder: (context, child, loadingProgress) {
+                    if (loadingProgress == null) return child;
+                    return const Center(child: CircularProgressIndicator()); // Hiện vòng xoay lúc load
+                  },
+                  errorBuilder: (context, error, stackTrace) {
+                    return Center(
+                      child: Icon(Icons.broken_image, size: 80, color: Colors.grey.shade400),
+                    );
+                  },
+                )
+                    : Center(
+                  // Nếu không có ảnh thì hiện icon quyển sách mặc định
+                  child: Icon(
+                    Icons.menu_book_rounded,
+                    size: 100,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
                 ),
               ),
             ),
