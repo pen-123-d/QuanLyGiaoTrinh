@@ -49,9 +49,49 @@ class _AddBookScreenState extends State<AddBookScreen> {
 
   // HÀM MỞ CAMERA/THƯ VIỆN & ĐẨY ẢNH LÊN CLOUDINARY
   Future<void> _pickAndUploadImage() async {
+    showModalBottomSheet(
+      context: context,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(15.0)),
+      ),
+      builder: (BuildContext context) {
+        return SafeArea(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              // Nút 1: MỞ CAMERA CHỤP ẢNH
+              ListTile(
+                leading: const Icon(Icons.camera_alt_rounded, color: Colors.blue),
+                title: const Text('Chụp ảnh trực tiếp'),
+                onTap: () {
+                  Navigator.pop(context); // Đóng menu
+                  _processImage(ImageSource.camera); // Gọi hàm xử lý ảnh với Camera
+                },
+              ),
+              const Divider(height: 1),
+              // Nút 2: MỞ THƯ VIỆN ẢNH
+              ListTile(
+                leading: const Icon(Icons.photo_library_rounded, color: Colors.green),
+                title: const Text('Chọn ảnh từ thư viện'),
+                onTap: () {
+                  Navigator.pop(context); // Đóng menu
+                  _processImage(ImageSource.gallery); // Gọi hàm xử lý ảnh với Thư viện
+                },
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  // HÀM XỬ LÝ LẤY ẢNH VÀ ĐẨY LÊN CLOUDINARY
+  Future<void> _processImage(ImageSource source) async {
     final picker = ImagePicker();
-    // Bạn có thể đổi ImageSource.gallery thành ImageSource.camera nếu muốn chụp trực tiếp
-    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    final pickedFile = await picker.pickImage(
+      source: source,
+      imageQuality: 80, // Giảm chất lượng ảnh một xíu để up lên Cloudinary cho nhanh
+    );
 
     if (pickedFile != null) {
       setState(() {
