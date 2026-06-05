@@ -32,7 +32,7 @@
 
 Để tiết kiệm thời gian và bỏ qua các bước cài đặt môi trường rườm rà, vui lòng tải file ứng dụng (APK) và cài đặt trực tiếp trên điện thoại Android:
 
-👉 **[BẤM VÀO ĐÂY ĐỂ TẢI FILE APK]([https://drive.google.com/drive/folders/1bpAOeZqFiKR5Sg0k6b-HsE1hZuEERdZL?usp=drive_link])**
+👉 **[https://drive.google.com/drive/folders/1bpAOeZqFiKR5Sg0k6b-HsE1hZuEERdZL?usp=drive_link]
 
 **Tài khoản Test được cấp quyền:**
 Do giới hạn bảo mật của Google về việc gửi SMS, vui lòng sử dụng các tài khoản test sau để đăng nhập:
