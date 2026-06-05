@@ -36,7 +36,7 @@
 
 **Tài khoản Test được cấp quyền:**
 Do giới hạn bảo mật của Google về việc gửi SMS, vui lòng sử dụng các tài khoản test sau để đăng nhập:
-*   **Số điện thoại:** `+84901234567` *(hoặc thay bằng số sếp đã cài)*
+*   **Số điện thoại:** `+84 0907129800` 
 *   **Mã OTP:** `123456`
 
 ---
